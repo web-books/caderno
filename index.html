@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <title>Links</title>
+
+    <link rel='stylesheet' href="" />
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-family: Verdana, Geneva, Tahoma, sans-serif; }
+      body {
+        background: linear-gradient(
+          27deg,
+          #121212,
+          #242424,
+          #424242
+        );
+        min-height: 100vh;
+        display: grid;
+        grid-template-areas: "s a"
+                             "s b"
+                             "s f";
+        grid-template-rows: clamp( 80px, 9vw, 100px ) 1fr clamp( 80px, 9vw, 100px );
+        grid-template-columns: 50px 1fr;
+        /* place-items: center; */
+      }
+
+      appbar {
+        grid-area: a;
+        display: flex; justify-content: space-between; align-items: center;
+        width: 100vw; height: clamp( 80px, 9vw, 100px );
+        margin-top: 0;
+        padding-left: 2.5vw;
+        background: #ff000060;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 5px #000;
+        position: fixed;
+        top: 0;
+        right: 0;
+      }
+      
+      .appbar-a {
+        margin-left: 1.6ch;
+        font-size: 3.5rem;
+        cursor: pointer;
+        text-shadow: 0 0 10px #ce000010,
+                     0 0 30px #ff9e0090, 
+                     0 0 60px #fff;
+        color: #000;
+        transition: 1.1s ease-out;
+      }
+      .appbar-a:hover {
+        text-shadow: 0 0 30px #5c33ff;
+        color: #00ffff50;
+        transition: .3s ease-in;
+      }
+      
+      .appbar-s {
+        list-style: none;
+        width: 655px;
+        padding-right: 8ch;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .appbar-s ul {
+        display: flex; 
+        list-style: none;
+        column-gap: clamp( 100px, 6.5vw, 650px );
+      }
+      .appbar-s ul li{
+        color: #fff;
+        cursor: pointer;
+        transition: 1s ease-out;
+      }
+      .appbar-s ul li:hover{
+        color: #ff9e00;
+        transition: .2s ease-in;
+      }
+      
+      .appbar-d {
+        margin-right: 2ch;
+        font-size: 2.3rem;
+        color: aliceblue;
+        text-shadow: 0 0 6px#ce000040;
+        cursor: pointer;
+        transition: 1s ease-out;
+      }
+      .appbar-d:hover {
+        color: #1f1d21;
+        text-shadow: 0 0 6px#ce000040;
+        transition: .3s ease-out;
+      }
+
+      side_panel {
+        grid-area: s;
+        background: linear-gradient( 45deg, #000, #1f0413, #1f0413 );
+        box-shadow: 0 0 5px #00000099;
+        display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+        color: #fa1e4e;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 100vh;
+      }
+
+      sHead {
+        display: grid; place-items: center;
+        height: clamp( 80px, 9vw, 100px )
+      }
+
+      sBody {
+        display: flex; flex-direction: column; justify-content: stretch; align-items: center;
+        font-size: 1.6rem;
+        height: 85%;
+        margin-top: 2ch;
+        margin-bottom: 2ch;
+      }
+
+      sFooter {
+        display: grid; place-items: center;
+        margin-bottom: 1ch;
+        font-size: 1.6rem;
+        padding-top: 2ch;
+      }
+
+      span {
+        cursor: pointer;
+      }
+
+      scaffold {
+        grid-area: b;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100vh;
+      }
+
+      glass {
+            background: #ffffff10;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            display: flex; flex-direction: column; align-items: left; 
+            padding: 1ch 0 0 1ch;
+            border-radius: 1rem;
+            box-shadow: 0 0 5px#00000035;
+            width: clamp(300px, 60%, 600px ); height: clamp( 200px, 50vh, 800px );
+            font-size: 1.8rem; font-weight: 800;
+      }
+        glass .texts{
+            background-image: linear-gradient(49deg, rgb(175, 0, 37), rgb(75, 12, 177) 51%, rgb(0, 148, 158));
+            -webkit-text-fill-color: transparent;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            letter-spacing: 1px;
+        }
+
+        details {
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            font-size: 16px;
+        }
+
+        /* a {  color: #ff9e00; }
+        a:hover {  color: #1f1d21; }  */
+
+        footer {
+          grid-area: f;
+        }
+        
+        @media only screen and (max-width: 700px) {
+            .appbar-a {
+        		margin-left: 2.8ch;
+        		font-size: 2.5rem;
+        		cursor: pointer;
+        		text-shadow: 0 0 10px #ce000010,
+                     0 0 30px #ff9e0090, 
+                     0 0 60px #fff;
+        		color: #000;
+        		transition: 1.1s ease-out;
+      		}
+
+        	.appbar-s {
+        		padding-right: 1ch;
+        		list-style: none;
+        		width: 20vw;
+     		}
+      		.appbar-s ul {
+        		display: flex; 
+        		list-style: none;
+        		column-gap: 4.5vw;
+      		}
+      		.appbar-d {
+        		margin-right: 1.5ch;
+        		font-size: 2rem;
+      		}
+        }
+
+        #searchin {
+          visibility: hidden;
+          border-radius: 5rem;
+          color: #fff;
+          background: #1f1d21;
+          z-index: 5;
+          border: 5px;
+          border-bottom-color: #5c33ff;
+        }
+        #searchin span{
+          color: #ff9e00;
+          font-size: 1.3rem;
+          display: grid; place-items: center;
+        }
+
+
+
+
+
+        /* 
+        :host-context(html.gx) .tile-content {
+        --border: 0; 
+        --cut: 16px;
+        --width: var(--speeddial-tile-width);
+        --height: var(--speeddial-tile-height);
+        background-size: cover;
+        clip-path: polygon( var(--cut) 0, var(--width) 0, var(--width) calc(var(--height) - var(--cut)), var(--width) calc(var(--height) - var(--cut)), calc(var(--width) - var(--cut)) var(--height), 0 var(--height), 0 var(--cut) );
+        } 
+
+.
+         */
+
+
+
+
+    </style>
+  </head>
+
+  <body>
+
+    <appbar>
+      <div class="appbar-a">
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <p> &#10645; </p>
+          <p> &#9882; </p>
+          <p> &#10646; </p>
+        </div>
+      </div>
+      <div class="appbar-s">
+        <ul>
+          <p>&#9886;</p>
+          <li>MENU</li>
+          <li>UNEM</li>
+          <li>MEUN</li>
+          <p>&#9887;</p>
+        </ul>
+      </div>
+      <div class="appbar-d"><p>&#9776;</p></div>
+    </appbar>
+ 
+    <side_panel>
+      <sHead>
+          <span style="font-size: 2.5rem; color: #fa1e4e;">&#9772;</span>
+      </sHead>
+        <span>&#10603; &#10605;</span>
+      <sBody class="buttons">
+          <span id="play">&#10646;</span>
+          <span>&#12475;</span>
+          <span style="transform: rotate(90deg);">&#12540;</span>
+          <span>&#12458;</span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </sBody>
+        <span>&#10603; &#10605;</span>
+        <sFooter>
+          <span>&#12016;</span>
+          <span>&#12006;</span>
+        </sFooter>
+    </side_panel>
+    
+    <scaffold>
+      <glass>
+            <p></p>
+            <details>
+                <summary>Links</summary>
+                
+            </details>
+            <a href="" id="searchin"><span>
+              o que você está procurando aqui!
+            </span></a>
+      </glass>
+
+
+    </scaffold>
+
+
+
+
+    <script>
+      const el = document.getElementById( 'searchin' );
+
+      setTimeout( () => {
+          el.style.visibility = 'visible';
+          el.style.borderBottomColor = '#000';
+      }, 5 );
+    </script>
+  </body>
+</html>
+
+
+
+<!-- 
+    cubic bezier
+    cubic-bezier( .55, 0, .1, 1 );
+    //  bit.ly/FBAnimHoverCSS
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+-->

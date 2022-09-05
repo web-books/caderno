@@ -1,0 +1,117 @@
+
+
+.tiles-grid {
+    box-sizing: border-box;
+    min-height: 10px;
+    padding: 0;
+    position: relative;
+    transition: left 0.3s;
+  }
+  
+  /* GX effect - blink */
+  
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    30% {
+      opacity: 0.12;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  :host-context(.blink-effect) .tile .tile-effect {
+    background-color: white;
+    height: var(--speeddial-tile-height);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: opacity 0.4s ease-out;
+    width: var(--speeddial-tile-width);
+  }
+  
+  :host-context(.blink-effect) .tile:hover .tile-effect {
+    animation: blink 0.4s ease-out;
+  }
+  
+  /* GX effect - slide out */
+  
+  :host-context(.slide-out-effect) .speeddial .tile {
+    top: 12px;
+    transition: all 0.3s ease-out;
+  }
+  
+  :host-context(.slide-out-effect) .tile .tile-content {
+    z-index: 1;
+    position: relative;
+  }
+  
+  :host-context(.slide-out-effect) .tile:not(.add) .title {
+    position: relative;
+    top: -32px;
+    transition: all 0.3s ease-out;
+    z-index: 0;
+    opacity: 0;
+  }
+  
+  :host-context(.slide-out-effect) .tile:hover {
+    top: 0;
+  }
+  
+  :host-context(.slide-out-effect) .tile:hover .title {
+    top: 0;
+    opacity: 1;
+  }
+  
+  /* GX effect - hovercraft */
+  
+  :host-context(.hovercraft-effect) .tile .tile-content {
+    transition: all 0.2s ease-out;
+  }
+  
+  :host-context(.hovercraft-effect) .tile:hover .tile-main {
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.16));
+  }
+  
+  :host-context(.hovercraft-effect) .tile:hover .tile-main.is-thumbnail {
+    filter: none;
+  }
+  
+  :host-context(.hovercraft-effect) .tile .tile-main {
+    transition: box-shadow 0.2s ease-out, transform 0.25s ease;
+  }
+  
+  :host-context(.hovercraft-effect) .tile:hover .tile-main:not(.is-thumbnail) {
+    transform: scale(1.08) translateZ(0);
+    perspective: 500px;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+  }
+  
+  :host-context(.hovercraft-effect) .tile.context-menu-opened .tile-main:not(.is-thumbnail) {
+    transform: scale(1.08) translateZ(0);
+  }
+  
+  :host-context(.hovercraft-effect) .tile-effect {
+    --inner-color: rgba( 255, 255, 255, 0.06);
+    --outer-color: rgba( 255, 255, 255, 0);
+    --gradient-size: 64px;
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    width: calc(var(--speeddial-tile-width) + var(--gradient-size));
+    height: calc(var(--speeddial-tile-height) + var(--gradient-size));
+    top: calc(var(--gradient-size) / -2);
+    right: calc(var(--gradient-size) / -2);
+    opacity: 0;
+    z-index: 3;
+    transition: opacity 0.25s ease;
+    background: radial-gradient(var(--gradient-size) at 50%, var(--inner-color) 0%, var(--outer-color) 100%);
+  }
+  
+  :host-context(.hovercraft-effect) .tile:hover .tile-effect {
+    opacity: 1;
+  }
+  
